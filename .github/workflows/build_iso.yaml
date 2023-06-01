@@ -28,12 +28,12 @@ jobs:
         mkarchiso -v -w work -o build archiso
         rm -rf work
     - name: Upload ISO to releases
-        uses: svenstaro/upload-release-action@v2
-        with:
-         repo_token: ${{ secrets.ACCESS_TOKEN }}
-         file: build/dolphinos*.iso
-         tag: DolphinOS-ISO-${{ env.NOW }}
-         prerelease: false
-         overwrite: true
-         body: "Automatically built latest ISO"   
+      uses: svenstaro/upload-release-action@v2
+      with:
+        repo_token: ${{ secrets.ACCESS_TOKEN }}
+        file: build/dolphinos*.iso
+        tag: DolphinOS-ISO-${{ env.NOW }}
+        prerelease: false
+        overwrite: true
+        body: "Automatically built latest ISO"     
     
