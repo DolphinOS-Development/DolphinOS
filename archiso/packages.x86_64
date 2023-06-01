@@ -66,6 +66,7 @@ xorg-xinit
 xorg-xinput
 xorg-xkill
 xorg-xrandr
+xterm
 
 ## Audio hardware
 alsa-firmware
@@ -158,6 +159,7 @@ wget
 xdg-user-dirs-gtk
 xdg-utils
 xz
+noto-fonts
 
 # VM SUPPORT
 
