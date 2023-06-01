@@ -1,0 +1,191 @@
+# BASE
+
+## Base system
+linux-zen
+linux-zen-headers
+linux-lts
+linux-lts-headers
+linux-firmware
+base
+base-devel
+less
+lsb-release
+man-db
+man-pages
+nano
+vim
+which
+sudo
+sysfsutils
+mkinitcpio
+mkinitcpio-archiso
+mkinitcpio-nfs-utils
+
+## Filesystems
+btrfs-progs
+dosfstools
+e2fsprogs
+exfatprogs
+f2fs-tools
+gvfs
+gvfs-afc
+gvfs-gphoto2
+gvfs-mtp
+gvfs-nfs
+gvfs-smb
+jfsutils
+lvm2
+mtools
+nfs-utils
+nilfs-utils
+ntfs-3g
+reiserfsprogs
+xfsprogs
+snapper
+
+## Boot
+efibootmgr
+efitools
+
+# HARDWARE
+
+## CPU
+amd-ucode
+intel-ucode
+
+## X system
+mesa
+mesa-utils
+xf86-input-libinput
+xf86-video-amdgpu
+vulkan-radeon
+xorg-server
+xorg-xdpyinfo
+xorg-xinit
+xorg-xinput
+xorg-xkill
+xorg-xrandr
+
+## Audio hardware
+alsa-firmware
+alsa-plugins
+alsa-utils
+ffmpegthumbnailer
+gst-libav
+gst-plugin-pipewire
+gst-plugins-bad
+gst-plugins-ugly
+libdvdcss
+pipewire-alsa
+pipewire-jack
+pipewire-pulse
+rtkit
+sof-firmware
+wireplumber
+
+## Networking
+bind
+dhclient
+dnsmasq
+ethtool
+iwd
+modemmanager
+nbd
+ndisc6
+net-tools
+netctl
+networkmanager
+networkmanager-openconnect
+networkmanager-openvpn
+nss-mdns
+openconnect
+openvpn
+ppp
+pptpclient
+rp-pppoe
+usb_modeswitch
+vpnc
+whois
+wireless-regdb
+wpa_supplicant
+xl2tpd
+
+## Bluetooth
+bluez
+bluez-utils
+bluez-plugins
+blueman
+
+## General hardware
+lsscsi
+sg3_utils
+smartmontools
+usbutils
+
+# SOFTWARE
+
+## General system
+bash-completion
+dmidecode
+dialog
+downgrade
+duf
+freetype2
+git
+glances
+python-packaging
+gpm
+gptfdisk
+haveged
+hwdetect
+hwinfo
+inxi
+libgsf
+libopenraw
+mlocate
+ntp
+pacman-contrib
+pkgfile
+poppler-glib
+power-profiles-daemon
+rebuild-detector
+reflector
+rsync
+tldr
+unrar
+unzip
+wget
+xdg-user-dirs-gtk
+xdg-utils
+xz
+
+# VM SUPPORT
+
+## Qemu
+qemu-guest-agent
+
+## Spice
+spice-vdagent
+
+## Virtual-box
+virtualbox-guest-utils
+
+## VMware
+open-vm-tools
+xf86-input-vmmouse
+xf86-video-vmware
+
+# INSTALLER
+
+## Live iso specific
+arch-install-scripts
+memtest86+
+mkinitcpio-archiso
+pv
+grub
+grub-btrfs
+
+## Calamares
+dolphinos-calamares
+dolphinos-calamares-configs
+ckbcomp
