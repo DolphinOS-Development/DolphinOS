@@ -17,7 +17,7 @@ jobs:
     steps:
     - name: Update packages and install required dependencies for the job
       run: |
-        pacman -Syu --noconfirm --needed sudo git base-devel mkinitcpio-archiso squashfs-tools wget base-devel curl lftp networkmanager
+        pacman -Syu --noconfirm --needed sudo git base-devel mkarchiso mkinitcpio-archiso squashfs-tools wget base-devel curl lftp networkmanager
     - uses: actions/checkout@v3
     - name: Set current date and hour as environment variable
       run: echo "NOW=$(date +'%Y-%m-%d_%H-%M')" >> $GITHUB_ENV
