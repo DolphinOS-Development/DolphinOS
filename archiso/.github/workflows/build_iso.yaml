@@ -1,0 +1,39 @@
+name: GitHub Action for DolphinOS ISO
+
+on: workflow_dispatch
+
+jobs:
+  build_iso:
+    name: Create and build DolphinOS ISO
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    container:
+      image: archlinux:latest
+      options: --privileged
+
+    steps:
+    - name: Update packages and install required dependencies for the job
+      run: |
+        pacman -Syu --noconfirm --needed sudo git base-devel mkinitcpio-archiso squashfs-tools wget base-devel curl lftp networkmanager
+    - uses: actions/checkout@v3
+    - name: Set current date and hour as environment variable
+      run: echo "NOW=$(date +'%Y-%m-%d_%H-%M')" >> $GITHUB_ENV
+    - name: Build ISO
+      run: |
+        mkdir work
+        mkdir build
+        mkarchiso -v -w work -o build archiso
+        rm -rf work
+    - name: Upload ISO to releases
+      uses: svenstaro/upload-release-action@v2
+      with:
+        repo_token: ${{ secrets.ACCESS_TOKEN }}
+        file: build/dolphinos*.iso
+        tag: DolphinOS-ISO-${{ env.NOW }}
+        prerelease: false
+        overwrite: true
+        body: "Automatically built latest ISO"   
+    
