@@ -32,10 +32,10 @@ jobs:
     - name: Upload ISO to releases
       uses: svenstaro/upload-release-action@v2
       with:
-        repo_token: ${{ secrets.ACCESS_TOKEN }}
+        file_glob: true
         file: build/dolphinos*.iso
         tag: DolphinOS-ISO-${{ env.NOW }}
         prerelease: false
         overwrite: true
-        body: "Automatically built latest ISO"     
-    
+        body: "Automatically built latest ISO"
+        make_latest: true
