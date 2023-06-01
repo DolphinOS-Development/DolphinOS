@@ -1,4 +1,4 @@
-name: GitHub Action for DolphinOS ISO
+name: GitHub Action for building DolphinOS ISO
 
 on: workflow_dispatch
 
