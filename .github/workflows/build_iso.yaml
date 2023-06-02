@@ -17,6 +17,7 @@ jobs:
     steps:
     - name: Update packages and install required dependencies for the job
       run: |
+        timedatectl set-timezone Europe/Madrid
         pacman -Syu --noconfirm --needed sudo git base-devel reflector archiso mkinitcpio-archiso squashfs-tools wget base-devel curl lftp networkmanager
         reflector --latest 20 --protocol https --sort rate --save /etc/pacman.d/mirrorlist
         pacman -Syu --noconfirm
