@@ -159,6 +159,7 @@ wget
 xdg-user-dirs-gtk
 xdg-utils
 xz
+openbox
 noto-fonts
 
 # VM SUPPORT
