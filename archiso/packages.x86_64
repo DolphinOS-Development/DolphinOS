@@ -21,6 +21,7 @@ mkinitcpio
 mkinitcpio-archiso
 mkinitcpio-nfs-utils
 edk2-shell
+syslinux
 zsh
 
 ## Filesystems
