@@ -49,6 +49,7 @@ snapper
 ## Boot
 efibootmgr
 efitools
+os-prober
 
 # HARDWARE
 
