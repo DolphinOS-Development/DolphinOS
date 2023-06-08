@@ -45,6 +45,7 @@ ntfs-3g
 reiserfsprogs
 xfsprogs
 snapper
+snap-pac
 
 ## Boot
 efibootmgr
