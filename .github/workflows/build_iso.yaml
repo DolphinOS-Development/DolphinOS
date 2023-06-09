@@ -50,10 +50,9 @@ jobs:
     - name: Upload NVIDIA ISO to Sourceforge releases
       run: |
         mkdir -p ~/.ssh
-        ssh-keyscan -H frs.sourceforge.net > ~/.ssh/known_hosts
+        ssh-keyscan -t ssh-ed25519 frs.sourceforge.net > ~/.ssh/known_hosts
         eval $(ssh-agent)
         ssh-add - <<< "$SSH_KEY"
-        ssh-add -l
         rsync -avz -e ssh archiso/profiledef.sh dolphinos@frs.sourceforge.net:/home/frs/project/dolphinos/DolphinOS-NVIDIA
       env:
         SSH_KEY: ${{ secrets.SOURCEFORGE_PRIVATE_KEY }}
