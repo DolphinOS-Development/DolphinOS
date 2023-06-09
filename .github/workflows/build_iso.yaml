@@ -19,8 +19,8 @@ jobs:
     steps:
     - name: Update packages and install required dependencies for the job
       run: | 
-        pacman -Syu --noconfirm --needed sudo git base-devel reflector archiso mkinitcpio-archiso squashfs-tools wget base-devel curl lftp networkmanager
-        reflector rsync --latest 20 --protocol https --sort rate --save /etc/pacman.d/mirrorlist
+        pacman -Syu --noconfirm --needed sudo git base-devel reflector archiso mkinitcpio-archiso squashfs-tools wget base-devel curl lftp networkmanager rsync
+        reflector --latest 20 --protocol https --sort rate --save /etc/pacman.d/mirrorlist
         pacman -Syu --noconfirm
     - uses: actions/checkout@v3
     - name: Set current date and hour as environment variable
