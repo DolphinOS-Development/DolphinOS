@@ -25,33 +25,35 @@ jobs:
     - uses: actions/checkout@v3
     - name: Set current date and hour as environment variable
       run: echo "NOW=$(date +'%Y-%m-%d_%H-%M')" >> $GITHUB_ENV
-    - name: Build ISO
-      run: |
-        mkdir work
-        mkdir build
-        mkarchiso -v -w work -o build archiso
-        rm -rf work
-    - name: Upload ISO to Sourceforge Releases
-      run: |
-        mkdir -p ~/.ssh
-        ssh-keyscan -H frs.sourceforge.net > ~/.ssh/known_hosts
-        rsync -avz -e "ssh -i ${{ secrets.SOURCEFORGE_PRIVATE_KEY }}" build/dolphinos*.iso dolphinos@frs.sourceforge.net:/home/frs/project/DolphinOS/DolphinOS
+    # - name: Build ISO
+    #   run: |
+    #     mkdir work
+    #     mkdir build
+    #     mkarchiso -v -w work -o build archiso
+    #     rm -rf work
+    # - name: Upload ISO to Sourceforge Releases
+    #   run: |
+    #     mkdir -p ~/.ssh
+    #     ssh-keyscan -H frs.sourceforge.net > ~/.ssh/known_hosts
+    #     rsync -avz -e "ssh -i ${{ secrets.SOURCEFORGE_PRIVATE_KEY }}" build/dolphinos*.iso dolphinos@frs.sourceforge.net:/home/frs/project/DolphinOS/DolphinOS
     - uses: actions/checkout@v3
       with:
         ref: nvidia
-    - name: Build NVIDIA ISO
-      run: |
-        rm -rf work
-        rm -rf build
-        mkdir work
-        mkdir build
-        mkarchiso -v -w work -o build archiso
-        rm -rf work
+    # - name: Build NVIDIA ISO
+    #   run: |
+    #     rm -rf work
+    #     rm -rf build
+    #     mkdir work
+    #     mkdir build
+    #     mkarchiso -v -w work -o build archiso
+    #     rm -rf work
     - name: Upload NVIDIA ISO to Sourceforge releases
       run: |
         mkdir -p ~/.ssh
         ssh-keyscan -H frs.sourceforge.net > ~/.ssh/known_hosts
-        rsync -avz -e "ssh -i ${{ secrets.SOURCEFORGE_PRIVATE_KEY }}" build/dolphinos*.iso dolphinos@frs.sourceforge.net:/home/frs/project/DolphinOS/DolphinOS-NVIDIA
+        #rsync -avz -e "ssh -i '${{ secrets.SOURCEFORGE_PRIVATE_KEY }}'" build/dolphinos*.iso dolphinos@frs.sourceforge.net:/home/frs/project/DolphinOS/DolphinOS-NVIDIA
+        rsync -avz -e "ssh -i '${{ secrets.SOURCEFORGE_PRIVATE_KEY }}'" archiso/profiledef.sh dolphinos@frs.sourceforge.net:/home/frs/project/DolphinOS/DolphinOS-NVIDIA
+
     - name: Publish Sourceforge link to releases
       uses: ncipollo/release-action@v1
       with:
