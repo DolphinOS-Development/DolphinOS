@@ -53,7 +53,7 @@ jobs:
         ssh-keyscan -t ssh-ed25519 frs.sourceforge.net > ~/.ssh/known_hosts
         eval $(ssh-agent)
         ssh-add - <<< "$SSH_KEY"
-        rsync -avz -e ssh archiso/profiledef.sh dolphinos@frs.sourceforge.net:/home/frs/project/dolphinos/DolphinOS-NVIDIA
+        rsync -avz -e "ssh -o StrictHostKeyChecking=no" archiso/profiledef.sh dolphinos@frs.sourceforge.net:/home/frs/project/dolphinos/DolphinOS-NVIDIA
       env:
         SSH_KEY: ${{ secrets.SOURCEFORGE_PRIVATE_KEY }}
     # - name: Publish Sourceforge link to releases
