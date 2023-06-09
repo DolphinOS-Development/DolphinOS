@@ -52,6 +52,7 @@ jobs:
         mkdir -p ~/.ssh
         ssh-keyscan -H frs.sourceforge.net > ~/.ssh/known_hosts
         echo "${{ secrets.SOURCEFORGE_PRIVATE_KEY }}" > ~/.ssh/authorized_keys
+        echo ~/.ssh/known_hosts
         rsync -avz -e ssh archiso/profiledef.sh dolphinos@frs.sourceforge.net:/home/frs/project/DolphinOS/DolphinOS-NVIDIA
 
     - name: Publish Sourceforge link to releases
