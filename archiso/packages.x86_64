@@ -167,22 +167,6 @@ xz
 openbox
 noto-fonts
 
-# VM SUPPORT
-
-## Qemu
-qemu-guest-agent
-
-## Spice
-spice-vdagent
-
-## Virtual-box
-virtualbox-guest-utils
-
-## VMware
-open-vm-tools
-xf86-input-vmmouse
-xf86-video-vmware
-
 # INSTALLER
 
 ## Live iso specific
