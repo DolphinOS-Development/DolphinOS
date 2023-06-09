@@ -33,7 +33,8 @@ jobs:
         rm -rf work
     - name: Upload ISO to Sourceforge Releases
       run: |
-        ssh-keyscan -H frs.sourceforge.net >> ~/.ssh/known_hosts
+        mkdir -p ~/.ssh
+        ssh-keyscan -H frs.sourceforge.net > ~/.ssh/known_hosts
         rsync -avz -e "ssh -i ${{ secrets.SOURCEFORGE_PRIVATE_KEY }}" build/dolphinos*.iso dolphinos@frs.sourceforge.net:/home/frs/project/DolphinOS/DolphinOS
     - uses: actions/checkout@v3
       with:
