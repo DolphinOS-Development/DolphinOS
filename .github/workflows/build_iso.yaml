@@ -22,31 +22,13 @@ jobs:
         pacman -Syu --noconfirm --needed sudo git base-devel reflector archiso mkinitcpio-archiso squashfs-tools wget base-devel curl lftp networkmanager rsync openssh
         reflector --latest 20 --protocol https --sort rate --save /etc/pacman.d/mirrorlist
         pacman -Syu --noconfirm
-    - uses: actions/checkout@v3
     - name: Set current date and hour as environment variable
       run: echo "NOW=$(date +'%Y-%m-%d_%H-%M')" >> $GITHUB_ENV
-    - name: Build ISO
-      run: |
-        mkdir work
-        mkdir build
-        mkarchiso -v -w work -o build archiso
-        rm -rf work
-    - name: Upload ISO to Sourceforge Releases
-      run: |
-        mkdir -p ~/.ssh
-        ssh-keyscan -t ssh-ed25519 frs.sourceforge.net > ~/.ssh/known_hosts
-        eval $(ssh-agent)
-        ssh-add - <<< "$SSH_KEY"
-        rsync -avz -e "ssh -o StrictHostKeyChecking=no" build/dolphinos*.iso dolphinos@frs.sourceforge.net:/home/frs/project/dolphinos/DolphinOS
-      env:
-        SSH_KEY: ${{ secrets.SOURCEFORGE_PRIVATE_KEY }}
     - uses: actions/checkout@v3
       with:
         ref: nvidia
     - name: Build NVIDIA ISO
       run: |
-        rm -rf work
-        rm -rf build
         mkdir work
         mkdir build
         mkarchiso -v -w work -o build archiso
@@ -58,6 +40,26 @@ jobs:
         eval $(ssh-agent)
         ssh-add - <<< "$SSH_KEY"
         rsync -avz -e "ssh -o StrictHostKeyChecking=no" build/dolphinos*.iso dolphinos@frs.sourceforge.net:/home/frs/project/dolphinos/DolphinOS-NVIDIA
+      env:
+        SSH_KEY: ${{ secrets.SOURCEFORGE_PRIVATE_KEY }}
+    - uses: actions/checkout@v3
+      with:
+        ref: main
+    - name: Build ISO
+      run: |
+        rm -rf work
+        rm -rf build
+        mkdir work
+        mkdir build
+        mkarchiso -v -w work -o build archiso
+        rm -rf work
+    - name: Upload ISO to Sourceforge Releases
+      run: |
+        mkdir -p ~/.ssh
+        ssh-keyscan -t ssh-ed25519 frs.sourceforge.net > ~/.ssh/known_hosts
+        eval $(ssh-agent)
+        ssh-add - <<< "$SSH_KEY"
+        rsync -avz -e "ssh -o StrictHostKeyChecking=no" build/dolphinos*.iso dolphinos@frs.sourceforge.net:/home/frs/project/dolphinos/DolphinOS
       env:
         SSH_KEY: ${{ secrets.SOURCEFORGE_PRIVATE_KEY }}
     - name: Publish Sourceforge link to releases
