@@ -202,3 +202,9 @@ dolphinos-calamares-configs
 ckbcomp
 dolphinos-iso-configs
 dolphinos-configs
+
+# DolphinOS
+dolphin-emu
+gamemode
+mangohud
+plymouth
