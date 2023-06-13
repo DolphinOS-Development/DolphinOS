@@ -22,6 +22,16 @@ jobs:
         pacman -Syu --noconfirm --needed sudo git base-devel reflector archiso mkinitcpio-archiso squashfs-tools wget base-devel curl lftp networkmanager rsync openssh
         reflector --latest 20 --protocol https --sort rate --save /etc/pacman.d/mirrorlist
         pacman -Syu --noconfirm
+        useradd builduser -m
+        passwd -d builduser
+        echo "builduser ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+        mkdir buildworkdir
+        chown -R builduser buildworkdir
+        cd buildworkdir
+        sudo -u builduser git clone https://aur.archlinux.org/yay-bin.git
+        cd yay-bin
+        sudo -u builduser makepkg -si --noconfirm
+        sudo -u builduser yay -S --noconfirm cubeb libspng
     - name: Set current date and hour as environment variable
       run: echo "NOW=$(date +'%Y-%m-%d_%H-%M')" >> $GITHUB_ENV
     - uses: actions/checkout@v3
