@@ -206,6 +206,8 @@ dolphinos-configs
 # DolphinOS
 dolphin-emu-git
 dolphin-emu-nogui-git
+cubeb
+libspng
 gamemode
 mangohud
 plymouth
