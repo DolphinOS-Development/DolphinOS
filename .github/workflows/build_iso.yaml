@@ -37,6 +37,12 @@ jobs:
     - uses: actions/checkout@v3
       with:
         ref: nvidia
+    - name: Clone and copy system packages to archiso
+      run: |
+        git clone git@github.com:DolphinOS-Development/dolphinos-repo.git
+        mkdir -p archiso/airootfs/var/dolphinos-packages
+        cp dolphinos-repo/x86_64/dolphinos-configs*.pkg.tar.zst archiso/airootfs/var/dolphinos-packages
+        cp dolphinos-repo/x86_64/dolphinos-dolphin-data*.pkg.tar.zst archiso/airootfs/var/dolphinos-packages
     - name: Build NVIDIA ISO
       run: |
         mkdir work
@@ -55,6 +61,12 @@ jobs:
     - uses: actions/checkout@v3
       with:
         ref: main
+    - name: Clone and copy system packages to archiso
+      run: |
+        git clone git@github.com:DolphinOS-Development/dolphinos-repo.git
+        mkdir -p archiso/airootfs/var/dolphinos-packages
+        cp dolphinos-repo/x86_64/dolphinos-configs*.pkg.tar.zst archiso/airootfs/var/dolphinos-packages
+        cp dolphinos-repo/x86_64/dolphinos-dolphin-data*.pkg.tar.zst archiso/airootfs/var/dolphinos-packages
     - name: Build ISO
       run: |
         rm -rf work
