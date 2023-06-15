@@ -39,7 +39,7 @@ jobs:
         ref: nvidia
     - name: Clone and copy system packages to archiso
       run: |
-        git clone git@github.com:DolphinOS-Development/dolphinos-repo.git
+        git clone https://github.com/DolphinOS-Development/dolphinos-repo.git
         mkdir -p archiso/airootfs/var/dolphinos-packages
         cp dolphinos-repo/x86_64/dolphinos-configs*.pkg.tar.zst archiso/airootfs/var/dolphinos-packages
         cp dolphinos-repo/x86_64/dolphinos-dolphin-data*.pkg.tar.zst archiso/airootfs/var/dolphinos-packages
@@ -63,7 +63,7 @@ jobs:
         ref: main
     - name: Clone and copy system packages to archiso
       run: |
-        git clone git@github.com:DolphinOS-Development/dolphinos-repo.git
+        git clone https://github.com/DolphinOS-Development/dolphinos-repo.git
         mkdir -p archiso/airootfs/var/dolphinos-packages
         cp dolphinos-repo/x86_64/dolphinos-configs*.pkg.tar.zst archiso/airootfs/var/dolphinos-packages
         cp dolphinos-repo/x86_64/dolphinos-dolphin-data*.pkg.tar.zst archiso/airootfs/var/dolphinos-packages
