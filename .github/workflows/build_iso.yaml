@@ -18,7 +18,8 @@ jobs:
 
     steps:
     - name: Update packages and install required dependencies for the job
-      run: | 
+      run: |
+        echo -e "[dolphinos-repo]\nSigLevel = Optional TrustedOnly\nServer = https://dolphinos-development.github.io/\$repo/\$arch" >> /etc/pacman.conf
         pacman -Syu --noconfirm --needed sudo git base-devel reflector archiso mkinitcpio-archiso squashfs-tools wget base-devel curl lftp networkmanager rsync openssh
         reflector --latest 20 --protocol https --sort rate --save /etc/pacman.d/mirrorlist
         pacman -Syu --noconfirm
@@ -37,12 +38,13 @@ jobs:
     - uses: actions/checkout@v3
       with:
         ref: nvidia
-    - name: Clone and copy system packages to archiso
+    - name: Download and copy system packages to archiso
       run: |
-        git clone https://github.com/DolphinOS-Development/dolphinos-repo.git
         mkdir -p archiso/airootfs/var/dolphinos-packages
-        cp dolphinos-repo/x86_64/dolphinos-configs*.pkg.tar.zst archiso/airootfs/var/dolphinos-packages
-        cp dolphinos-repo/x86_64/dolphinos-dolphin-data*.pkg.tar.zst archiso/airootfs/var/dolphinos-packages
+        mkdir pkgs
+        pacman -Syw --cachedir pkgs dolphinos-configs dolphinos-dolphin-data
+        cp pkgs/dolphinos-configs*.pkg.tar.zst archiso/airootfs/var/dolphinos-packages/dolphinos-configs.pkg.tar.zst
+        cp pkgs/dolphinos-dolphin-data*.pkg.tar.zst archiso/airootfs/var/dolphinos-packages/dolphinos-dolphin-data.pkg.tar.zst
     - name: Build NVIDIA ISO
       run: |
         mkdir work
@@ -61,12 +63,13 @@ jobs:
     - uses: actions/checkout@v3
       with:
         ref: main
-    - name: Clone and copy system packages to archiso
+    - name: Download and copy system packages to archiso
       run: |
-        git clone https://github.com/DolphinOS-Development/dolphinos-repo.git
         mkdir -p archiso/airootfs/var/dolphinos-packages
-        cp dolphinos-repo/x86_64/dolphinos-configs*.pkg.tar.zst archiso/airootfs/var/dolphinos-packages
-        cp dolphinos-repo/x86_64/dolphinos-dolphin-data*.pkg.tar.zst archiso/airootfs/var/dolphinos-packages
+        mkdir pkgs
+        pacman -Syw --cachedir pkgs dolphinos-configs dolphinos-dolphin-data
+        cp pkgs/dolphinos-configs*.pkg.tar.zst archiso/airootfs/var/dolphinos-packages/dolphinos-configs.pkg.tar.zst
+        cp pkgs/dolphinos-dolphin-data*.pkg.tar.zst archiso/airootfs/var/dolphinos-packages/dolphinos-dolphin-data.pkg.tar.zst
     - name: Build ISO
       run: |
         rm -rf work
