@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 # shellcheck disable=SC2034
 
-iso_name="dolphinos"
-iso_label="DOLPHINOS_$(date --date="@${SOURCE_DATE_EPOCH:-$(date +%s)}" +%Y%m%d%H%M)"
+iso_name="dolphinos-nvidia"
+iso_label="DOLPHINOS_NVIDIA_$(date --date="@${SOURCE_DATE_EPOCH:-$(date +%s)}" +%Y%m%d%H%M)"
 iso_publisher="DolphinOS <https://github.com/DolphinOS-Development>"
-iso_application="DolphinOS installation ISO"
+iso_application="DolphinOS installation ISO NVIDIA Version"
 iso_version="$(date --date="@${SOURCE_DATE_EPOCH:-$(date +%s)}" +%Y.%m.%d.%H.%M)"
 install_dir="dolphinos"
 buildmodes=('iso')
