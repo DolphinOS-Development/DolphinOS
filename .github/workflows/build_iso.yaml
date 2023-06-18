@@ -42,8 +42,8 @@ jobs:
       run: |
         mkdir -p archiso/airootfs/var/dolphinos-packages
         mkdir pkgs
-        pacman -Syw --noconfirm --cachedir pkgs dolphinos-configs dolphinos-dolphin-data
-        cp pkgs/dolphinos-configs*.pkg.tar.zst archiso/airootfs/var/dolphinos-packages/dolphinos-configs.pkg.tar.zst
+        pacman -Syw --noconfirm --cachedir pkgs dolphinos-configs-nvidia dolphinos-dolphin-data
+        cp pkgs/dolphinos-configs-nvidia*.pkg.tar.zst archiso/airootfs/var/dolphinos-packages/dolphinos-configs-nvidia.pkg.tar.zst
         cp pkgs/dolphinos-dolphin-data*.pkg.tar.zst archiso/airootfs/var/dolphinos-packages/dolphinos-dolphin-data.pkg.tar.zst
     - name: Build NVIDIA ISO
       run: |
