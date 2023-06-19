@@ -186,6 +186,8 @@ dolphinos-iso-configs
 # DolphinOS
 dolphin-emu-git
 dolphin-emu-nogui-git
+dolphinos-webapp
+python-flask
 cubeb
 libspng
 gamemode
