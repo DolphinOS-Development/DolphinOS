@@ -205,7 +205,7 @@ dolphinos-iso-configs
 # DolphinOS
 dolphin-emu-git
 dolphin-emu-nogui-git
-flask
+python-flask
 dolphinos-webapp
 cubeb
 libspng
