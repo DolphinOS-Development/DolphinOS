@@ -189,6 +189,7 @@ dolphin-emu-nogui-git
 dolphinos-webapp
 python-flask
 python-nmcli
+python-xlib
 cubeb
 libspng
 gamemode
