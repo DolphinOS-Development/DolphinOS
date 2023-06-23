@@ -190,6 +190,7 @@ dolphinos-webapp
 python-flask
 python-nmcli
 python-xlib
+udiskie
 cubeb
 libspng
 gamemode
