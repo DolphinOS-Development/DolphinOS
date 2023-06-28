@@ -19,7 +19,7 @@ jobs:
     steps:
     - name: Update packages and install required dependencies for the job
       run: |
-        echo -e "[dolphinos-repo]\nSigLevel = Optional TrustedOnly\nServer = https://dolphinos-development.github.io/\$repo/\$arch" >> /etc/pacman.conf
+        echo -e "[dolphinos-repo]\nSigLevel = Optional TrustedOnly\nServer = https://jesusxd88.github.io/\$repo/\$arch" >> /etc/pacman.conf
         pacman -Syu --noconfirm --needed sudo git base-devel reflector archiso mkinitcpio-archiso squashfs-tools wget base-devel curl lftp networkmanager rsync openssh
         reflector --latest 20 --protocol https --sort rate --save /etc/pacman.d/mirrorlist
         pacman -Syu --noconfirm
@@ -42,8 +42,8 @@ jobs:
       run: |
         mkdir -p archiso/airootfs/var/dolphinos-packages
         mkdir pkgs
-        pacman -Syw --noconfirm --cachedir pkgs dolphinos-configs dolphinos-dolphin-data
-        cp pkgs/dolphinos-configs*.pkg.tar.zst archiso/airootfs/var/dolphinos-packages/dolphinos-configs.pkg.tar.zst
+        pacman -Syw --noconfirm --cachedir pkgs dolphinos-configs-nvidia dolphinos-dolphin-data
+        cp pkgs/dolphinos-configs-nvidia*.pkg.tar.zst archiso/airootfs/var/dolphinos-packages/dolphinos-configs-nvidia.pkg.tar.zst
         cp pkgs/dolphinos-dolphin-data*.pkg.tar.zst archiso/airootfs/var/dolphinos-packages/dolphinos-dolphin-data.pkg.tar.zst
     - name: Build NVIDIA ISO
       run: |
