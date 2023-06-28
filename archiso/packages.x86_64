@@ -205,6 +205,11 @@ dolphinos-iso-configs
 # DolphinOS
 dolphin-emu-git
 dolphin-emu-nogui-git
+python-flask
+dolphinos-webapp
+python-nmcli
+python-xlib
+udiskie
 cubeb
 libspng
 gamemode
