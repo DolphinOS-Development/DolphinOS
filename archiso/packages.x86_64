@@ -63,15 +63,18 @@ nvidia-dkms
 nvidia-utils
 nvidia-settings
 
+## Wayland Compositor
+gamescope
+
 ## X system
-xf86-input-libinput
-xorg-server
-xorg-xdpyinfo
-xorg-xinit
-xorg-xinput
-xorg-xkill
-xorg-xrandr
-xterm
+#xf86-input-libinput
+#xorg-server
+#xorg-xdpyinfo
+#xorg-xinit
+#xorg-xinput
+#xorg-xkill
+#xorg-xrandr
+#xterm
 
 ## Audio hardware
 alsa-firmware
@@ -184,8 +187,7 @@ ckbcomp
 dolphinos-iso-configs
 
 # DolphinOS
-dolphin-emu-git
-dolphin-emu-nogui-git
+dolphin-emu
 cubeb
 libspng
 gamemode
